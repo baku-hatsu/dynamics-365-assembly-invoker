@@ -6,9 +6,21 @@ namespace Debugger
 {
     public class DOrganizationServiceFactory : IOrganizationServiceFactory
     {
+        private readonly DSettings _settings;
+
+        public DOrganizationServiceFactory(DSettings settings)
+        {
+            _settings = settings;
+        }
+
         public IOrganizationService CreateOrganizationService(Guid? userId)
         {
-            return new CrmServiceClient("");
+            if (_settings?.Environment == null)
+            {
+                throw new ArgumentNullException("Environment");
+            }
+
+            return new CrmServiceClient(_settings.Environment.Instance, _settings.Environment.ClientId, _settings.Environment.ClientSecret, _settings.Environment.UseUniqueInstance, _settings.Environment.TokenCachePath);
         }
     }
 }

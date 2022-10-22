@@ -35,11 +35,22 @@
             this.class_combo_box = new System.Windows.Forms.ComboBox();
             this.path_text_box = new System.Windows.Forms.TextBox();
             this.open_file_dialog = new System.Windows.Forms.OpenFileDialog();
+            this.menu_strip = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.environmentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menu_strip.SuspendLayout();
             this.SuspendLayout();
             // 
             // browse_button
             // 
-            this.browse_button.Location = new System.Drawing.Point(12, 12);
+            this.browse_button.Location = new System.Drawing.Point(12, 27);
             this.browse_button.Name = "browse_button";
             this.browse_button.Size = new System.Drawing.Size(75, 23);
             this.browse_button.TabIndex = 0;
@@ -50,7 +61,7 @@
             // properties_button
             // 
             this.properties_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.properties_button.Location = new System.Drawing.Point(197, 68);
+            this.properties_button.Location = new System.Drawing.Point(447, 83);
             this.properties_button.Name = "properties_button";
             this.properties_button.Size = new System.Drawing.Size(75, 23);
             this.properties_button.TabIndex = 3;
@@ -62,7 +73,7 @@
             // 
             this.close_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.close_button.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.close_button.Location = new System.Drawing.Point(116, 126);
+            this.close_button.Location = new System.Drawing.Point(366, 176);
             this.close_button.Name = "close_button";
             this.close_button.Size = new System.Drawing.Size(75, 23);
             this.close_button.TabIndex = 5;
@@ -74,7 +85,7 @@
             // 
             this.execute_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.execute_button.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.execute_button.Location = new System.Drawing.Point(197, 126);
+            this.execute_button.Location = new System.Drawing.Point(447, 176);
             this.execute_button.Name = "execute_button";
             this.execute_button.Size = new System.Drawing.Size(75, 23);
             this.execute_button.TabIndex = 4;
@@ -87,9 +98,9 @@
             this.class_combo_box.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.class_combo_box.FormattingEnabled = true;
-            this.class_combo_box.Location = new System.Drawing.Point(12, 41);
+            this.class_combo_box.Location = new System.Drawing.Point(12, 56);
             this.class_combo_box.Name = "class_combo_box";
-            this.class_combo_box.Size = new System.Drawing.Size(260, 21);
+            this.class_combo_box.Size = new System.Drawing.Size(510, 21);
             this.class_combo_box.TabIndex = 2;
             this.class_combo_box.SelectedIndexChanged += new System.EventHandler(this.Class_combo_box_selected_index_changed);
             // 
@@ -97,9 +108,9 @@
             // 
             this.path_text_box.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.path_text_box.Location = new System.Drawing.Point(93, 12);
+            this.path_text_box.Location = new System.Drawing.Point(93, 30);
             this.path_text_box.Name = "path_text_box";
-            this.path_text_box.Size = new System.Drawing.Size(179, 20);
+            this.path_text_box.Size = new System.Drawing.Size(429, 20);
             this.path_text_box.TabIndex = 1;
             // 
             // open_file_dialog
@@ -108,22 +119,100 @@
             this.open_file_dialog.Filter = "Dynamic Link Library|*.dll";
             this.open_file_dialog.SupportMultiDottedExtensions = true;
             // 
+            // menu_strip
+            // 
+            this.menu_strip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.environmentToolStripMenuItem,
+            this.helpToolStripMenuItem});
+            this.menu_strip.Location = new System.Drawing.Point(0, 0);
+            this.menu_strip.Name = "menu_strip";
+            this.menu_strip.Size = new System.Drawing.Size(534, 24);
+            this.menu_strip.TabIndex = 6;
+            this.menu_strip.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newToolStripMenuItem,
+            this.openToolStripMenuItem,
+            this.closeToolStripMenuItem,
+            this.saveToolStripMenuItem,
+            this.saveAsToolStripMenuItem,
+            this.exitToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // newToolStripMenuItem
+            // 
+            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.newToolStripMenuItem.Text = "New";
+            // 
+            // openToolStripMenuItem
+            // 
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.openToolStripMenuItem.Text = "Open";
+            // 
+            // closeToolStripMenuItem
+            // 
+            this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.closeToolStripMenuItem.Text = "Close";
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.saveToolStripMenuItem.Text = "Save";
+            // 
+            // saveAsToolStripMenuItem
+            // 
+            this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.saveAsToolStripMenuItem.Text = "Save As...";
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            // 
+            // environmentToolStripMenuItem
+            // 
+            this.environmentToolStripMenuItem.Name = "environmentToolStripMenuItem";
+            this.environmentToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
+            this.environmentToolStripMenuItem.Text = "Environment";
+            this.environmentToolStripMenuItem.Click += new System.EventHandler(this.Environment_tool_strip_menu_Item_click);
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "Help";
+            // 
             // Debugger
             // 
             this.AcceptButton = this.execute_button;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.close_button;
-            this.ClientSize = new System.Drawing.Size(284, 161);
+            this.ClientSize = new System.Drawing.Size(534, 211);
             this.Controls.Add(this.path_text_box);
             this.Controls.Add(this.class_combo_box);
             this.Controls.Add(this.execute_button);
             this.Controls.Add(this.close_button);
             this.Controls.Add(this.properties_button);
             this.Controls.Add(this.browse_button);
+            this.Controls.Add(this.menu_strip);
+            this.MainMenuStrip = this.menu_strip;
             this.MinimumSize = new System.Drawing.Size(300, 200);
             this.Name = "Debugger";
             this.Text = "DLL Debugger";
+            this.menu_strip.ResumeLayout(false);
+            this.menu_strip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -138,6 +227,16 @@
         private System.Windows.Forms.ComboBox class_combo_box;
         private System.Windows.Forms.TextBox path_text_box;
         private System.Windows.Forms.OpenFileDialog open_file_dialog;
+        private System.Windows.Forms.MenuStrip menu_strip;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem environmentToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
     }
 }
 

@@ -13,10 +13,12 @@ namespace Debugger
     {
         private DPluginContext _pluginContext = null;
         private DWorkflowContext _workflowContext = null;
+        private DSettings _settings = null;
 
         public Debugger()
         {
             InitializeComponent();
+            // Will create settings on load if loaded from file
         }
 
         private void Browse_button_click(object sender, EventArgs e)
@@ -43,7 +45,7 @@ namespace Debugger
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show(ex.Message, "Assembly load error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -60,7 +62,7 @@ namespace Debugger
                     var invoker = new WorkflowInvoker((CodeActivity)Activator.CreateInstance(type));
                     invoker.Extensions.Add<IWorkflowContext>(() => _workflowContext);
                     invoker.Extensions.Add<ITracingService>(() => new DTracingService());
-                    invoker.Extensions.Add<IOrganizationServiceFactory>(() => new DOrganizationServiceFactory());
+                    invoker.Extensions.Add<IOrganizationServiceFactory>(() => new DOrganizationServiceFactory(_settings));
 
                     var inputs = new Dictionary<string, object>();
 
@@ -70,7 +72,7 @@ namespace Debugger
                 {
                     var plugin = (IPlugin)Activator.CreateInstance(type);
 
-                    plugin.Execute(new DServiceProvider(_pluginContext));
+                    plugin.Execute(new DServiceProvider(_settings, _pluginContext));
                 }
                 else
                 {
@@ -82,7 +84,7 @@ namespace Debugger
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Execution error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -125,6 +127,20 @@ namespace Debugger
 
         private void Class_combo_box_selected_index_changed(object sender, EventArgs e)
         {
+        }
+
+        private void Environment_tool_strip_menu_Item_click(object sender, EventArgs e)
+        {
+            var form = new EnvironmentForm();
+            var result = form.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                _settings = new DSettings
+                {
+                    Environment = form._environment
+                };
+            }
         }
     }
 }

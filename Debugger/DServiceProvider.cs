@@ -5,10 +5,12 @@ namespace Debugger
 {
     public class DServiceProvider : IServiceProvider
     {
+        private readonly DSettings _settings;
         private readonly DPluginContext _context;
 
-        public DServiceProvider(DPluginContext context)
+        public DServiceProvider(DSettings settings, DPluginContext context)
         {
+            _settings = settings;
             _context = context;
         }
 
@@ -20,7 +22,7 @@ namespace Debugger
                     return _context;
 
                 case nameof(IOrganizationServiceFactory):
-                    return new DOrganizationServiceFactory();
+                    return new DOrganizationServiceFactory(_settings);
 
                 case nameof(ITracingService):
                     return new DTracingService();
