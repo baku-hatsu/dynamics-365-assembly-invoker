@@ -45,7 +45,7 @@
             this.ok_button.Location = new System.Drawing.Point(705, 434);
             this.ok_button.Name = "ok_button";
             this.ok_button.Size = new System.Drawing.Size(75, 23);
-            this.ok_button.TabIndex = 0;
+            this.ok_button.TabIndex = 1;
             this.ok_button.Text = "OK";
             this.ok_button.UseVisualStyleBackColor = true;
             this.ok_button.Click += new System.EventHandler(this.Ok_button_click);
@@ -57,7 +57,7 @@
             this.cancel_button.Location = new System.Drawing.Point(624, 434);
             this.cancel_button.Name = "cancel_button";
             this.cancel_button.Size = new System.Drawing.Size(75, 23);
-            this.cancel_button.TabIndex = 0;
+            this.cancel_button.TabIndex = 2;
             this.cancel_button.Text = "Cancel";
             this.cancel_button.UseVisualStyleBackColor = true;
             this.cancel_button.Click += new System.EventHandler(this.Cancel_button_click);
@@ -79,7 +79,7 @@
             this.data_grid_view.Location = new System.Drawing.Point(1, 1);
             this.data_grid_view.Name = "data_grid_view";
             this.data_grid_view.Size = new System.Drawing.Size(782, 427);
-            this.data_grid_view.TabIndex = 1;
+            this.data_grid_view.TabIndex = 0;
             // 
             // DataEnabled
             // 

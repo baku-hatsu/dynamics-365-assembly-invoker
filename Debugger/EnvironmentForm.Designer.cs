@@ -52,7 +52,7 @@
             this.ok_button.Location = new System.Drawing.Point(405, 234);
             this.ok_button.Name = "ok_button";
             this.ok_button.Size = new System.Drawing.Size(75, 23);
-            this.ok_button.TabIndex = 0;
+            this.ok_button.TabIndex = 5;
             this.ok_button.Text = "OK";
             this.ok_button.UseVisualStyleBackColor = true;
             this.ok_button.Click += new System.EventHandler(this.Ok_button_click);
@@ -64,7 +64,7 @@
             this.cancel_button.Location = new System.Drawing.Point(324, 234);
             this.cancel_button.Name = "cancel_button";
             this.cancel_button.Size = new System.Drawing.Size(75, 23);
-            this.cancel_button.TabIndex = 0;
+            this.cancel_button.TabIndex = 6;
             this.cancel_button.Text = "Cancel";
             this.cancel_button.UseVisualStyleBackColor = true;
             // 
@@ -75,7 +75,7 @@
             this.instance_text_box.Location = new System.Drawing.Point(4, 17);
             this.instance_text_box.Name = "instance_text_box";
             this.instance_text_box.Size = new System.Drawing.Size(476, 20);
-            this.instance_text_box.TabIndex = 1;
+            this.instance_text_box.TabIndex = 0;
             // 
             // client_id_text_box
             // 
@@ -93,7 +93,7 @@
             this.client_secret_text_box.Location = new System.Drawing.Point(4, 95);
             this.client_secret_text_box.Name = "client_secret_text_box";
             this.client_secret_text_box.Size = new System.Drawing.Size(476, 20);
-            this.client_secret_text_box.TabIndex = 1;
+            this.client_secret_text_box.TabIndex = 2;
             // 
             // use_unique_instance_check_box
             // 
@@ -103,7 +103,7 @@
             this.use_unique_instance_check_box.Location = new System.Drawing.Point(4, 121);
             this.use_unique_instance_check_box.Name = "use_unique_instance_check_box";
             this.use_unique_instance_check_box.Size = new System.Drawing.Size(123, 17);
-            this.use_unique_instance_check_box.TabIndex = 2;
+            this.use_unique_instance_check_box.TabIndex = 3;
             this.use_unique_instance_check_box.Text = "Use unique instance";
             this.use_unique_instance_check_box.UseVisualStyleBackColor = true;
             // 
@@ -115,7 +115,7 @@
             this.token_cache_path_text_box.Name = "token_cache_path_text_box";
             this.token_cache_path_text_box.ReadOnly = true;
             this.token_cache_path_text_box.Size = new System.Drawing.Size(476, 20);
-            this.token_cache_path_text_box.TabIndex = 3;
+            this.token_cache_path_text_box.TabIndex = 4;
             this.token_cache_path_text_box.Click += new System.EventHandler(this.Token_cache_path_text_box_click);
             // 
             // instance_label
@@ -124,7 +124,7 @@
             this.instance_label.Location = new System.Drawing.Point(4, 1);
             this.instance_label.Name = "instance_label";
             this.instance_label.Size = new System.Drawing.Size(48, 13);
-            this.instance_label.TabIndex = 4;
+            this.instance_label.TabIndex = 0;
             this.instance_label.Text = "Instance";
             // 
             // client_id_label
@@ -133,7 +133,7 @@
             this.client_id_label.Location = new System.Drawing.Point(4, 40);
             this.client_id_label.Name = "client_id_label";
             this.client_id_label.Size = new System.Drawing.Size(45, 13);
-            this.client_id_label.TabIndex = 5;
+            this.client_id_label.TabIndex = 1;
             this.client_id_label.Text = "Client Id";
             // 
             // client_secret_label
@@ -142,7 +142,7 @@
             this.client_secret_label.Location = new System.Drawing.Point(4, 79);
             this.client_secret_label.Name = "client_secret_label";
             this.client_secret_label.Size = new System.Drawing.Size(65, 13);
-            this.client_secret_label.TabIndex = 6;
+            this.client_secret_label.TabIndex = 2;
             this.client_secret_label.Text = "Client secret";
             // 
             // token_cache_path_label
@@ -151,7 +151,7 @@
             this.token_cache_path_label.Location = new System.Drawing.Point(4, 141);
             this.token_cache_path_label.Name = "token_cache_path_label";
             this.token_cache_path_label.Size = new System.Drawing.Size(95, 13);
-            this.token_cache_path_label.TabIndex = 7;
+            this.token_cache_path_label.TabIndex = 4;
             this.token_cache_path_label.Text = "Token cache path";
             // 
             // error_provider
