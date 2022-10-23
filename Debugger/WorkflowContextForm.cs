@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Debugger
@@ -36,7 +37,7 @@ namespace Debugger
             data_grid_view.DataSource = bindingSource;
         }
 
-        private void Ok_button_click(object sender, System.EventArgs e)
+        private void Ok_button_click(object sender, EventArgs e)
         {
             var obj = new DWorkflowContext();
             var data = data_grid_view.DataSource as BindingSource;
@@ -47,17 +48,14 @@ namespace Debugger
 
                 if (item.DataEnabled)
                 {
-                    var name = item.DataTitle;
-                    var value = item.DataValue;
-
-                    obj.GetType().GetProperty(name).SetValue(obj, value, null);
+                    obj.GetType().GetProperty(item.DataTitle).SetValue(obj, CastHelper.Cast(item.DataType, item.DataValue));
                 }
             }
 
             _context = obj;
         }
 
-        private void Cancel_button_click(object sender, System.EventArgs e)
+        private void Cancel_button_click(object sender, EventArgs e)
         {
             Close();
         }

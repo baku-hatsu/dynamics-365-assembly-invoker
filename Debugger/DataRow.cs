@@ -8,7 +8,7 @@ namespace Debugger
 
         public string DataTitle { get; set; }
 
-        public object DataValue { get; set; }
+        public string DataValue { get; set; }
 
         public Type DataType { get; set; }
     }

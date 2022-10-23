@@ -23,23 +23,18 @@ namespace Debugger
 
         public string SecondaryEntityName { get; set; }
 
-        [NotImplemented]
-        public int Stage => throw new NotImplementedException();
+        public int Stage { get; set; }
 
         [NotImplemented]
         public IPluginExecutionContext ParentContext => throw new NotImplementedException();
 
-        [NotImplemented]
-        public int Mode => throw new NotImplementedException();
+        public int Mode { get; set; }
 
-        [NotImplemented]
-        public int IsolationMode => throw new NotImplementedException();
+        public int IsolationMode { get; set; }
 
-        [NotImplemented]
-        public int Depth => throw new NotImplementedException();
+        public int Depth { get; set; }
 
-        [NotImplemented]
-        public Guid? RequestId => throw new NotImplementedException();
+        public Guid? RequestId { get; set; }
 
         [NotImplemented]
         public ParameterCollection InputParameters => throw new NotImplementedException();
@@ -59,22 +54,16 @@ namespace Debugger
         [NotImplemented]
         public EntityReference OwningExtension => throw new NotImplementedException();
 
-        [NotImplemented]
-        public Guid CorrelationId => throw new NotImplementedException();
+        public Guid CorrelationId { get; set; }
 
-        [NotImplemented]
-        public bool IsExecutingOffline => throw new NotImplementedException();
+        public bool IsExecutingOffline { get; set; }
 
-        [NotImplemented]
-        public bool IsOfflinePlayback => throw new NotImplementedException();
+        public bool IsOfflinePlayback { get; set; }
 
-        [NotImplemented]
-        public bool IsInTransaction => throw new NotImplementedException();
+        public bool IsInTransaction { get; set; }
 
-        [NotImplemented]
-        public Guid OperationId => throw new NotImplementedException();
+        public Guid OperationId { get; set; }
 
-        [NotImplemented]
-        public DateTime OperationCreatedOn => throw new NotImplementedException();
+        public DateTime OperationCreatedOn { get; set; }
     }
 }

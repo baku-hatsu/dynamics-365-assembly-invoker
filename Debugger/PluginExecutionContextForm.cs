@@ -48,10 +48,7 @@ namespace Debugger
 
                 if (item.DataEnabled)
                 {
-                    var name = item.DataTitle;
-                    var value = item.DataValue;
-
-                    obj.GetType().GetProperty(name).SetValue(obj, value, null);
+                    obj.GetType().GetProperty(item.DataTitle).SetValue(obj, CastHelper.Cast(item.DataType, item.DataValue));
                 }
             }
 
