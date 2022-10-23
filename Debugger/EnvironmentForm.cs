@@ -18,7 +18,7 @@ namespace Debugger
 
             if (result == DialogResult.OK)
             {
-                folder_browser_dialog.SelectedPath = token_cache_path_text_box.Text;
+                token_cache_path_text_box.Text = folder_browser_dialog.SelectedPath;
             }
         }
 
