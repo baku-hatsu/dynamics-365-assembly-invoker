@@ -102,7 +102,6 @@
             this.class_combo_box.Name = "class_combo_box";
             this.class_combo_box.Size = new System.Drawing.Size(510, 21);
             this.class_combo_box.TabIndex = 2;
-            this.class_combo_box.SelectedIndexChanged += new System.EventHandler(this.Class_combo_box_selected_index_changed);
             // 
             // path_text_box
             // 

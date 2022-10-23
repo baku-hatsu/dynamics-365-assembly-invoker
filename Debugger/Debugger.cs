@@ -125,10 +125,6 @@ namespace Debugger
             }
         }
 
-        private void Class_combo_box_selected_index_changed(object sender, EventArgs e)
-        {
-        }
-
         private void Environment_tool_strip_menu_Item_click(object sender, EventArgs e)
         {
             var form = new EnvironmentForm();
