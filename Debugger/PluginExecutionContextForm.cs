@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -6,6 +7,8 @@ namespace Debugger
 {
     public partial class PluginExecutionContextForm : Form
     {
+        private DataGridViewCellEventArgs mouseLocation;
+
         public DPluginContext _context = null;
 
         public PluginExecutionContextForm()
@@ -48,7 +51,7 @@ namespace Debugger
 
                 if (item.DataEnabled)
                 {
-                    obj.GetType().GetProperty(item.DataTitle).SetValue(obj, CastHelper.Cast(item.DataType, item.DataValue));
+                    obj.GetType().GetProperty(item.DataTitle).SetValue(obj, TypeHelper.Cast(item.DataType, item.DataValue));
                 }
             }
 
@@ -58,6 +61,40 @@ namespace Debugger
         private void Cancel_button_click(object sender, EventArgs e)
         {
             Close();
+        }
+        private void Default_value_tool_strip_menu_item_click(object sender, EventArgs e)
+        {
+            if (mouseLocation.RowIndex > -1 && mouseLocation.ColumnIndex > -1)
+            {
+                if (data_grid_view.Rows[mouseLocation.RowIndex].DataBoundItem is DataRow item)
+                {
+                    data_grid_view.Rows[mouseLocation.RowIndex].Cells[mouseLocation.ColumnIndex].Value = TypeHelper.DefaultOf(item.DataType);
+                }
+            }
+        }
+
+        private void New_value_tool_strip_menu_item_click(object sender, EventArgs e)
+        {
+            if (mouseLocation.RowIndex > -1 && mouseLocation.ColumnIndex > -1)
+            {
+                if (data_grid_view.Rows[mouseLocation.RowIndex].DataBoundItem is DataRow item)
+                {
+                    data_grid_view.Rows[mouseLocation.RowIndex].Cells[mouseLocation.ColumnIndex].Value = TypeHelper.NewOf(item.DataType);
+                }
+            }
+        }
+
+        private void Data_grid_view_cell_mouse_enter(object sender, DataGridViewCellEventArgs e)
+        {
+            mouseLocation = e;
+        }
+
+        private void Context_menu_strip_opening(object sender, CancelEventArgs e)
+        {
+            if (mouseLocation.RowIndex < 0 || mouseLocation.ColumnIndex != 2)
+            {
+                e.Cancel = true;
+            }
         }
     }
 }

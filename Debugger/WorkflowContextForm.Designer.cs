@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.ok_button = new System.Windows.Forms.Button();
             this.cancel_button = new System.Windows.Forms.Button();
             this.data_grid_view = new System.Windows.Forms.DataGridView();
@@ -35,7 +36,11 @@
             this.DataTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.context_menu_strip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.default_value_tool_strip_menu_item = new System.Windows.Forms.ToolStripMenuItem();
+            this.new_value_tool_strip_menu_item = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.data_grid_view)).BeginInit();
+            this.context_menu_strip.SuspendLayout();
             this.SuspendLayout();
             // 
             // ok_button
@@ -76,10 +81,12 @@
             this.DataTitle,
             this.DataValue,
             this.DataType});
+            this.data_grid_view.ContextMenuStrip = this.context_menu_strip;
             this.data_grid_view.Location = new System.Drawing.Point(1, 1);
             this.data_grid_view.Name = "data_grid_view";
             this.data_grid_view.Size = new System.Drawing.Size(782, 427);
             this.data_grid_view.TabIndex = 0;
+            this.data_grid_view.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.Data_grid_view_cell_mouse_enter);
             // 
             // DataEnabled
             // 
@@ -127,6 +134,30 @@
             this.DataType.Visible = false;
             this.DataType.Width = 5;
             // 
+            // context_menu_strip
+            // 
+            this.context_menu_strip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.default_value_tool_strip_menu_item,
+            this.new_value_tool_strip_menu_item});
+            this.context_menu_strip.Name = "contextMenuStrip1";
+            this.context_menu_strip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.context_menu_strip.Size = new System.Drawing.Size(181, 70);
+            this.context_menu_strip.Opening += new System.ComponentModel.CancelEventHandler(this.Context_menu_strip_opening);
+            // 
+            // default_value_tool_strip_menu_item
+            // 
+            this.default_value_tool_strip_menu_item.Name = "default_value_tool_strip_menu_item";
+            this.default_value_tool_strip_menu_item.Size = new System.Drawing.Size(180, 22);
+            this.default_value_tool_strip_menu_item.Text = "Default value";
+            this.default_value_tool_strip_menu_item.Click += new System.EventHandler(this.Default_value_tool_strip_menu_item_click);
+            // 
+            // new_value_tool_strip_menu_item
+            // 
+            this.new_value_tool_strip_menu_item.Name = "new_value_tool_strip_menu_item";
+            this.new_value_tool_strip_menu_item.Size = new System.Drawing.Size(180, 22);
+            this.new_value_tool_strip_menu_item.Text = "New value";
+            this.new_value_tool_strip_menu_item.Click += new System.EventHandler(this.New_value_tool_strip_menu_item_click);
+            // 
             // WorkflowContextForm
             // 
             this.AcceptButton = this.ok_button;
@@ -142,6 +173,7 @@
             this.Padding = new System.Windows.Forms.Padding(1);
             this.Text = "Workflow Context";
             ((System.ComponentModel.ISupportInitialize)(this.data_grid_view)).EndInit();
+            this.context_menu_strip.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -155,5 +187,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DataTitle;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataValue;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataType;
+        private System.Windows.Forms.ContextMenuStrip context_menu_strip;
+        private System.Windows.Forms.ToolStripMenuItem default_value_tool_strip_menu_item;
+        private System.Windows.Forms.ToolStripMenuItem new_value_tool_strip_menu_item;
     }
 }
