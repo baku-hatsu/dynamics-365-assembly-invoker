@@ -11,9 +11,10 @@ namespace Debugger
 {
     public partial class Debugger : Form
     {
-        private DPluginContext _pluginContext = null;
-        private DWorkflowContext _workflowContext = null;
+        private DPluginContext _pluginContext = new DPluginContext();
+        private DWorkflowContext _workflowContext = new DWorkflowContext();
         private DSettings _settings = null;
+        private Dictionary<string, object> _inputs = new Dictionary<string, object>();
 
         public Debugger()
         {
@@ -64,9 +65,7 @@ namespace Debugger
                     invoker.Extensions.Add<ITracingService>(() => new DTracingService());
                     invoker.Extensions.Add<IOrganizationServiceFactory>(() => new DOrganizationServiceFactory(_settings));
 
-                    var inputs = new Dictionary<string, object>();
-
-                    var outputs = invoker.Invoke(inputs);
+                    var outputs = invoker.Invoke(_inputs);
                 }
                 else if (isPlugin)
                 {
@@ -77,9 +76,8 @@ namespace Debugger
                 else
                 {
                     var method = type.GetMethod("CustomMethod");
-                    var parameters = new object[1] { "value" };
 
-                    var outputs = method.Invoke(Activator.CreateInstance(type), parameters);
+                    var outputs = method.Invoke(Activator.CreateInstance(type), _inputs.Select(x => x.Value).ToArray());
                 }
             }
             catch (Exception ex)
@@ -91,6 +89,10 @@ namespace Debugger
         private void Close_button_click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void Inputs_button_click(object sender, EventArgs e)
+        {
         }
 
         private void Properties_button_click(object sender, EventArgs e)

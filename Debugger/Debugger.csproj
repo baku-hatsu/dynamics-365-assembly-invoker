@@ -121,6 +121,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExpandoObjectExtensions.cs" />
+    <Compile Include="ObjectCreatorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ObjectCreatorForm.Designer.cs">
+      <DependentUpon>ObjectCreatorForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="TypeHelper.cs" />
     <Compile Include="Debugger.cs">
       <SubType>Form</SubType>
@@ -162,6 +169,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EnvironmentForm.resx">
       <DependentUpon>EnvironmentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ObjectCreatorForm.resx">
+      <DependentUpon>ObjectCreatorForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PluginExecutionContextForm.resx">
       <DependentUpon>PluginExecutionContextForm.cs</DependentUpon>

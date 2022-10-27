@@ -45,6 +45,7 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.environmentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.inputs_button = new System.Windows.Forms.Button();
             this.menu_strip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -192,6 +193,17 @@
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
             // 
+            // inputs_button
+            // 
+            this.inputs_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.inputs_button.Location = new System.Drawing.Point(366, 83);
+            this.inputs_button.Name = "inputs_button";
+            this.inputs_button.Size = new System.Drawing.Size(75, 23);
+            this.inputs_button.TabIndex = 7;
+            this.inputs_button.Text = "Inputs";
+            this.inputs_button.UseVisualStyleBackColor = true;
+            this.inputs_button.Click += new System.EventHandler(this.Inputs_button_click);
+            // 
             // Debugger
             // 
             this.AcceptButton = this.execute_button;
@@ -199,6 +211,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.close_button;
             this.ClientSize = new System.Drawing.Size(534, 211);
+            this.Controls.Add(this.inputs_button);
             this.Controls.Add(this.path_text_box);
             this.Controls.Add(this.class_combo_box);
             this.Controls.Add(this.execute_button);
@@ -236,6 +249,7 @@
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.Button inputs_button;
     }
 }
 
