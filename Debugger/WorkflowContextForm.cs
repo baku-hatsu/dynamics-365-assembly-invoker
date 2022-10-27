@@ -9,7 +9,7 @@ namespace Debugger
     {
         private DataGridViewCellEventArgs mouseLocation;
 
-        public DWorkflowContext _context = null;
+        public DWorkflowContext _context = new DWorkflowContext();
 
         public WorkflowContextForm()
         {

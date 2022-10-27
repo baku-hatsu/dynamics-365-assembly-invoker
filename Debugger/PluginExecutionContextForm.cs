@@ -9,7 +9,7 @@ namespace Debugger
     {
         private DataGridViewCellEventArgs mouseLocation;
 
-        public DPluginContext _context = null;
+        public DPluginContext _context = new DPluginContext();
 
         public PluginExecutionContextForm()
         {
@@ -62,6 +62,7 @@ namespace Debugger
         {
             Close();
         }
+
         private void Default_value_tool_strip_menu_item_click(object sender, EventArgs e)
         {
             if (mouseLocation.RowIndex > -1 && mouseLocation.ColumnIndex > -1)
