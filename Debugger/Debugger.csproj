@@ -121,7 +121,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ExpandoObjectExtensions.cs" />
+    <Compile Include="TypeExtensions.cs" />
     <Compile Include="ObjectCreatorForm.cs">
       <SubType>Form</SubType>
     </Compile>

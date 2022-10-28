@@ -4,7 +4,19 @@ namespace Debugger
 {
     public static class TypeHelper
     {
-        public static object Cast(Type type, string value)
+        public static object Cast(Type type, object value)
+        {
+            if (value is string stringValue)
+            {
+                return Cast(type, stringValue);
+            }
+            else
+            {
+                return Cast(type, value?.ToString());
+            }
+        }
+
+        private static object Cast(Type type, string value)
         {
             switch (type)
             {

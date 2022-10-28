@@ -14,6 +14,7 @@ namespace Debugger
         private DPluginContext _pluginContext = new DPluginContext();
         private DWorkflowContext _workflowContext = new DWorkflowContext();
         private DSettings _settings = null;
+        private List<Type> _types = new List<Type>();
         private Dictionary<string, object> _inputs = new Dictionary<string, object>();
 
         public Debugger()
@@ -38,6 +39,8 @@ namespace Debugger
                 {
                     var assembly = Assembly.LoadFile(open_file_dialog.FileName);
                     var classes = assembly.GetTypes();
+
+                    _types = classes.ToList();
 
                     for (int index = 0; index < classes.Length; index++)
                     {
@@ -75,7 +78,7 @@ namespace Debugger
                 }
                 else
                 {
-                    var method = type.GetMethod("CustomMethod");
+                    var method = type.GetMethod("CustomMethod2");
 
                     var outputs = method.Invoke(Activator.CreateInstance(type), _inputs.Select(x => x.Value).ToArray());
                 }
@@ -93,6 +96,14 @@ namespace Debugger
 
         private void Inputs_button_click(object sender, EventArgs e)
         {
+            var form = new ObjectCreatorForm(true, _types);
+
+            var result = form.ShowDialog();
+
+            if (result == DialogResult.OK && form._result is Dictionary<string, object> dictionary)
+            {
+                _inputs = dictionary;
+            }
         }
 
         private void Properties_button_click(object sender, EventArgs e)

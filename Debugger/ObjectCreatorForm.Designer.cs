@@ -52,7 +52,7 @@
             this.object_data_grid_view.Name = "object_data_grid_view";
             this.object_data_grid_view.Size = new System.Drawing.Size(560, 208);
             this.object_data_grid_view.TabIndex = 0;
-            this.object_data_grid_view.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.Object_data_grid_view_cell_mouse_click);
+            this.object_data_grid_view.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.Object_data_grid_view_cell_enter);
             // 
             // PropertyName
             // 
