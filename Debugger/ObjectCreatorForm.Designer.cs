@@ -48,9 +48,9 @@
             this.PropertyType,
             this.PropertyValue});
             this.object_data_grid_view.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-            this.object_data_grid_view.Location = new System.Drawing.Point(12, 12);
+            this.object_data_grid_view.Location = new System.Drawing.Point(4, 4);
             this.object_data_grid_view.Name = "object_data_grid_view";
-            this.object_data_grid_view.Size = new System.Drawing.Size(560, 208);
+            this.object_data_grid_view.Size = new System.Drawing.Size(576, 224);
             this.object_data_grid_view.TabIndex = 0;
             this.object_data_grid_view.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.Object_data_grid_view_cell_enter);
             // 
@@ -84,7 +84,7 @@
             // 
             this.ok_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ok_button.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.ok_button.Location = new System.Drawing.Point(497, 226);
+            this.ok_button.Location = new System.Drawing.Point(505, 234);
             this.ok_button.Name = "ok_button";
             this.ok_button.Size = new System.Drawing.Size(75, 23);
             this.ok_button.TabIndex = 1;
@@ -96,7 +96,7 @@
             // 
             this.cancel_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cancel_button.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancel_button.Location = new System.Drawing.Point(416, 226);
+            this.cancel_button.Location = new System.Drawing.Point(424, 234);
             this.cancel_button.Name = "cancel_button";
             this.cancel_button.Size = new System.Drawing.Size(75, 23);
             this.cancel_button.TabIndex = 2;
@@ -113,8 +113,10 @@
             this.Controls.Add(this.cancel_button);
             this.Controls.Add(this.ok_button);
             this.Controls.Add(this.object_data_grid_view);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MinimumSize = new System.Drawing.Size(600, 300);
             this.Name = "ObjectCreatorForm";
+            this.Padding = new System.Windows.Forms.Padding(1);
             this.Text = "Object creator";
             ((System.ComponentModel.ISupportInitialize)(this.object_data_grid_view)).EndInit();
             this.ResumeLayout(false);

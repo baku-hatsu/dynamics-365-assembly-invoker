@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace Debugger
@@ -9,18 +11,18 @@ namespace Debugger
         public object _result = null;
 
         private readonly bool _isBaseForm = false;
-        private readonly List<Type> _types;
         private readonly Type _type;
+        private Assembly _assembly = null;
 
         private const int NameIndex = 0;
         private const int TypeIndex = 1;
         private const int ValueIndex = 2;
 
-        public ObjectCreatorForm(bool isBaseForm, List<Type> types, Type selectedType = null, object defaultObj = null)
+        public ObjectCreatorForm(bool isBaseForm, Assembly assembly, Type selectedType = null, object defaultObj = null)
         {
             _isBaseForm = isBaseForm;
-            _types = types;
             _type = selectedType;
+            _assembly = assembly;
 
             InitializeComponent();
             SetUpTypesComboBox(TypeIndex);
@@ -43,19 +45,20 @@ namespace Debugger
             for (int index = 0; index < properties.Length; index++)
             {
                 var rowIndex = object_data_grid_view.Rows.Add();
-                object_data_grid_view.Rows[rowIndex].Cells[NameIndex].Value = properties[index].Name;
-                object_data_grid_view.Rows[rowIndex].Cells[TypeIndex].Value = properties[index].PropertyType;
+                var propertyName = properties[index].Name;
+                var propertyType = properties[index].PropertyType;
+
+                object_data_grid_view.Rows[rowIndex].Cells[NameIndex].Value = propertyName;
+                object_data_grid_view.Rows[rowIndex].Cells[TypeIndex].Value = propertyType.GetUnderlyingType();
                 object_data_grid_view.Rows[rowIndex].Cells[ValueIndex].Value = null;
             }
         }
 
         private void FillObjectCreatorWithDefaultValues(object obj)
         {
-            var type = obj.GetType();
-
             for (int index = 0; index < object_data_grid_view.RowCount - 1; index++)
             {
-                var property = type.GetProperty(object_data_grid_view.Rows[index].Cells[NameIndex].Value.ToString());
+                var property = obj.GetType().GetProperty(object_data_grid_view.Rows[index].Cells[NameIndex].Value.ToString());
                 object_data_grid_view.Rows[index].Cells[ValueIndex].Value = property.GetValue(obj);
             }
         }
@@ -64,17 +67,26 @@ namespace Debugger
         {
             if (object_data_grid_view.Columns[columnIndex] is DataGridViewComboBoxColumn typeColumn)
             {
+                var loadedNamespaces = new List<string>();
+                if (_assembly != null)
+                {
+                    loadedNamespaces = _assembly.GetTypes().Select(t => t.Namespace).Distinct().ToList();
+                }
+
+                var customeTypes = AppDomain.CurrentDomain
+                    .GetAssemblies()
+                    .SelectMany(t => t.GetTypes())
+                    .Where(t => Properties.Settings.Default.Namespaces.Contains(t.Namespace) || loadedNamespaces.Contains(t.Namespace))
+                    .OrderBy(t => t.FullName)
+                    .ToArray();
+
+                typeColumn.DropDownWidth = 500;
                 typeColumn.DisplayMember = "Name";
                 typeColumn.ValueMember = "Value";
-                typeColumn.Items.Add(new { Name = typeof(Guid).FullName, Value = typeof(Guid) });
-                typeColumn.Items.Add(new { Name = typeof(string).FullName, Value = typeof(string) });
-                typeColumn.Items.Add(new { Name = typeof(int).FullName, Value = typeof(int) });
-                typeColumn.Items.Add(new { Name = typeof(bool).FullName, Value = typeof(bool) });
-                typeColumn.Items.Add(new { Name = typeof(DateTime).FullName, Value = typeof(DateTime) });
 
-                for (int index = 0; index < _types.Count; index++)
+                for (int index = 0; index < customeTypes.Length; index++)
                 {
-                    typeColumn.Items.Add(new { Name = _types[index].FullName, Value = _types[index] });
+                    typeColumn.Items.Add(new { Name = customeTypes[index].FullName, Value = customeTypes[index] });
                 }
             }
         }
@@ -137,7 +149,7 @@ namespace Debugger
             {
                 if (object_data_grid_view.Rows[e.RowIndex].Cells[TypeIndex].Value is Type type && type.IsNotApplicationPrimitive())
                 {
-                    var form = new ObjectCreatorForm(false, _types, type, object_data_grid_view.Rows[e.RowIndex].Cells[ValueIndex].Value);
+                    var form = new ObjectCreatorForm(false, _assembly, type, object_data_grid_view.Rows[e.RowIndex].Cells[ValueIndex].Value);
 
                     var result = form.ShowDialog();
 

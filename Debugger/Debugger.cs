@@ -3,6 +3,7 @@ using Microsoft.Xrm.Sdk.Workflow;
 using System;
 using System.Activities;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
@@ -14,44 +15,22 @@ namespace Debugger
         private DPluginContext _pluginContext = new DPluginContext();
         private DWorkflowContext _workflowContext = new DWorkflowContext();
         private DSettings _settings = null;
-        private List<Type> _types = new List<Type>();
         private Dictionary<string, object> _inputs = new Dictionary<string, object>();
+        private Assembly _assembly = null;
 
         public Debugger()
         {
             InitializeComponent();
-            // Will create settings on load if loaded from file
         }
 
         private void Browse_button_click(object sender, EventArgs e)
         {
-            var result = open_file_dialog.ShowDialog();
+            open_file_dialog.ShowDialog();
+        }
 
-            if (result == DialogResult.OK)
-            {
-                class_combo_box.Items.Clear();
-                class_combo_box.SelectedItem = null;
-                class_combo_box.Text = string.Empty;
-
-                // Analyze file ?
-                path_text_box.Text = open_file_dialog.FileName;
-                try
-                {
-                    var assembly = Assembly.LoadFile(open_file_dialog.FileName);
-                    var classes = assembly.GetTypes();
-
-                    _types = classes.ToList();
-
-                    for (int index = 0; index < classes.Length; index++)
-                    {
-                        class_combo_box.Items.Add(classes[index]);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Assembly load error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
+        private void Path_text_box_mouse_click(object sender, MouseEventArgs e)
+        {
+            open_file_dialog.ShowDialog();
         }
 
         private void Execute_button_click(object sender, EventArgs e)
@@ -96,7 +75,7 @@ namespace Debugger
 
         private void Inputs_button_click(object sender, EventArgs e)
         {
-            var form = new ObjectCreatorForm(true, _types);
+            var form = new ObjectCreatorForm(true, _assembly);
 
             var result = form.ShowDialog();
 
@@ -132,10 +111,6 @@ namespace Debugger
                     _pluginContext = form._context;
                 }
             }
-            else
-            {
-                throw new NotImplementedException();
-            }
         }
 
         private void Environment_tool_strip_menu_Item_click(object sender, EventArgs e)
@@ -150,6 +125,45 @@ namespace Debugger
                     Environment = form._environment
                 };
             }
+        }
+
+        private void Settings_tool_Strip_menu_item_click(object sender, EventArgs e)
+        {
+            var form = new SettingsForm();
+
+            var result = form.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+            }
+        }
+
+        private void Open_file_dialog_file_ok(object sender, CancelEventArgs e)
+        {
+            class_combo_box.Items.Clear();
+            class_combo_box.SelectedItem = null;
+            class_combo_box.Text = string.Empty;
+
+            try
+            {
+                _assembly = Assembly.LoadFile(open_file_dialog.FileName);
+                var types = _assembly.GetTypes();
+
+                for (int index = 0; index < types.Length; index++)
+                {
+                    class_combo_box.Items.Add(types[index]);
+                }
+
+                path_text_box.Text = open_file_dialog.FileName;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Assembly load error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void Debugger_FormClosing(object sender, FormClosingEventArgs e)
+        {
         }
     }
 }

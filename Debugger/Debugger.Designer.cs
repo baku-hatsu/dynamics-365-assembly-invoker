@@ -44,6 +44,7 @@
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.environmentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inputs_button = new System.Windows.Forms.Button();
             this.menu_strip.SuspendLayout();
@@ -112,18 +113,21 @@
             this.path_text_box.Name = "path_text_box";
             this.path_text_box.Size = new System.Drawing.Size(429, 20);
             this.path_text_box.TabIndex = 1;
+            this.path_text_box.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Path_text_box_mouse_click);
             // 
             // open_file_dialog
             // 
             this.open_file_dialog.FileName = "Dynamic Link Library Picker";
             this.open_file_dialog.Filter = "Dynamic Link Library|*.dll";
             this.open_file_dialog.SupportMultiDottedExtensions = true;
+            this.open_file_dialog.FileOk += new System.ComponentModel.CancelEventHandler(this.Open_file_dialog_file_ok);
             // 
             // menu_strip
             // 
             this.menu_strip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.environmentToolStripMenuItem,
+            this.settingsToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.menu_strip.Location = new System.Drawing.Point(0, 0);
             this.menu_strip.Name = "menu_strip";
@@ -187,6 +191,13 @@
             this.environmentToolStripMenuItem.Text = "Environment";
             this.environmentToolStripMenuItem.Click += new System.EventHandler(this.Environment_tool_strip_menu_Item_click);
             // 
+            // settingsToolStripMenuItem
+            // 
+            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.settingsToolStripMenuItem.Text = "Settings";
+            this.settingsToolStripMenuItem.Click += new System.EventHandler(this.Settings_tool_Strip_menu_item_click);
+            // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
@@ -223,6 +234,7 @@
             this.MinimumSize = new System.Drawing.Size(300, 200);
             this.Name = "Debugger";
             this.Text = "DLL Debugger";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Debugger_FormClosing);
             this.menu_strip.ResumeLayout(false);
             this.menu_strip.PerformLayout();
             this.ResumeLayout(false);
@@ -250,6 +262,7 @@
         private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.Button inputs_button;
+        private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
     }
 }
 

@@ -82,9 +82,9 @@
             this.DataValue,
             this.DataType});
             this.data_grid_view.ContextMenuStrip = this.context_menu_strip;
-            this.data_grid_view.Location = new System.Drawing.Point(1, 1);
+            this.data_grid_view.Location = new System.Drawing.Point(4, 4);
             this.data_grid_view.Name = "data_grid_view";
-            this.data_grid_view.Size = new System.Drawing.Size(782, 427);
+            this.data_grid_view.Size = new System.Drawing.Size(776, 424);
             this.data_grid_view.TabIndex = 0;
             this.data_grid_view.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.Data_grid_view_cell_mouse_enter);
             // 
@@ -141,20 +141,20 @@
             this.new_value_tool_strip_menu_item});
             this.context_menu_strip.Name = "context_menu_strip";
             this.context_menu_strip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.context_menu_strip.Size = new System.Drawing.Size(181, 70);
+            this.context_menu_strip.Size = new System.Drawing.Size(144, 48);
             this.context_menu_strip.Opening += new System.ComponentModel.CancelEventHandler(this.Context_menu_strip_opening);
             // 
             // default_value_tool_strip_menu_item
             // 
             this.default_value_tool_strip_menu_item.Name = "default_value_tool_strip_menu_item";
-            this.default_value_tool_strip_menu_item.Size = new System.Drawing.Size(180, 22);
+            this.default_value_tool_strip_menu_item.Size = new System.Drawing.Size(143, 22);
             this.default_value_tool_strip_menu_item.Text = "Default value";
             this.default_value_tool_strip_menu_item.Click += new System.EventHandler(this.Default_value_tool_strip_menu_item_click);
             // 
             // new_value_tool_strip_menu_item
             // 
             this.new_value_tool_strip_menu_item.Name = "new_value_tool_strip_menu_item";
-            this.new_value_tool_strip_menu_item.Size = new System.Drawing.Size(180, 22);
+            this.new_value_tool_strip_menu_item.Size = new System.Drawing.Size(143, 22);
             this.new_value_tool_strip_menu_item.Text = "New value";
             this.new_value_tool_strip_menu_item.Click += new System.EventHandler(this.New_value_tool_strip_menu_item_click);
             // 
